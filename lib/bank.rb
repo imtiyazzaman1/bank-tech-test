@@ -3,9 +3,9 @@ require_relative 'statement'
 # This is the class the user would interact with. It stores the users balance
 class Bank
   attr_reader :balance, :statement
-  def initialize
+  def initialize(statement = Statement.new)
     @balance = 0
-    @statement = Statement.new
+    @statement = statement
   end
 
   def deposit(amount, new_transaction = Transaction.new(@balance))

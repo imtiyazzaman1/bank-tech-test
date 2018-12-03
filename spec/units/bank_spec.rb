@@ -1,6 +1,8 @@
 require 'bank'
+require 'statement'
 
 describe Bank do
+  let(:subject) { described_class.new(Statement.new())}
   let(:transaction) { double :transaction }
   let(:transaction_2) { double :transaction_2 }
 
@@ -16,7 +18,8 @@ describe Bank do
     end
 
     it 'stores the transaction' do
-      expect(subject.statement.transactions).to include transaction
+      expect(subject.statement).to receive(:add)
+      subject.deposit(1000, transaction)
     end
   end
 
@@ -32,7 +35,8 @@ describe Bank do
     end
 
     it 'stores the transaction' do
-      expect(subject.statement.transactions).to include transaction_2
+      expect(subject.statement).to receive(:add)
+      subject.withdraw(500, transaction_2)
     end
   end
 end
