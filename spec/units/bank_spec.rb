@@ -40,7 +40,9 @@ describe Bank do
     end
 
     it 'throws an error if withdraw amount exceeds balance' do
-      expect { subject.withdraw(600, transaction_2) }.to raise_error('You cannot withdraw more than your balance')
+      expect { subject.withdraw(600, transaction_2) }.to raise_error(
+        'You cannot withdraw more than your balance'
+      )
     end
   end
 end

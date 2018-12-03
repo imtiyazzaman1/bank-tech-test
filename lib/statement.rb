@@ -31,14 +31,14 @@ class Statement
   end
 
   def add_credit(transaction)
-    return "#{format('%.2f', transaction.amount)} || " if transaction.type == 'credit'
+    return '|| ' unless transaction.type == 'credit'
 
-    '|| '
+    "#{format('%.2f', transaction.amount)} || "
   end
 
   def add_debit(transaction)
-    return "#{format('%.2f', transaction.amount)} || " if transaction.type == 'debit'
+    return '|| ' unless transaction.type == 'debit'
 
-    '|| '
+    "#{format('%.2f', transaction.amount)} || "
   end
 end
