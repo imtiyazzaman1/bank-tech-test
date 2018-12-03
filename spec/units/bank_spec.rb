@@ -13,6 +13,10 @@ describe Bank do
     it 'stores the deposited amount' do
       expect(subject.balance).to eq(1000)
     end
+
+    it 'stores the transaction' do
+      expect(subject.statement.transactions).to include transaction
+    end
   end
 
   describe('#withdraw') do
