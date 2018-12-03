@@ -13,5 +13,9 @@ describe(Transaction) do
     it 'add to the balance' do
       expect(subject.balance).to eq(1500)
     end
+
+    it 'stores the tranaction amount' do
+      expect(subject.amount).to eq(500)
+    end
   end
 end
