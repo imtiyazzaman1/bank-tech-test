@@ -15,11 +15,7 @@ class Statement
     table = 'date || credit || debit || balance'
 
     @transactions.each do |transaction|
-      table += "\n"
-      table += add_date(transaction)
-      table += add_credit(transaction)
-      table += add_debit(transaction)
-      table += format('%.2f', transaction.balance)
+      table += create_table_entry(transaction)
     end
     table
   end
@@ -33,12 +29,21 @@ class Statement
   def add_credit(transaction)
     return '|| ' unless transaction.type == 'credit'
 
-    "#{format('%.2f', transaction.amount)} || "
+    "#{to_2dp(transaction.amount)} || "
   end
 
   def add_debit(transaction)
     return '|| ' unless transaction.type == 'debit'
 
-    "#{format('%.2f', transaction.amount)} || "
+    "#{to_2dp(transaction.amount)} || "
+  end
+
+  def to_2dp(number)
+    format('%.2f', number)
+  end
+
+  def create_table_entry(transaction)
+    "\n" + add_date(transaction) + add_credit(transaction) +
+    add_debit(transaction) + to_2dp(transaction.balance)
   end
 end
