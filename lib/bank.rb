@@ -9,9 +9,17 @@ class Bank
     add_to_balance(amount)
   end
 
+  def withdraw(amount)
+    subtract_from_balance(amount)
+  end
+
   private
 
   def add_to_balance(amount)
-    @balance = + amount
+    @balance += amount
+  end
+
+  def subtract_from_balance(amount)
+    @balance -= amount
   end
 end
