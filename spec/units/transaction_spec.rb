@@ -18,4 +18,13 @@ describe(Transaction) do
       expect(subject.amount).to eq(500)
     end
   end
+
+  describe('#debit') do
+    before(:each) do
+      subject.debit(500)
+    end
+    it 'stores the tranaction type as debit' do
+      expect(subject.type).to eq 'debit'
+    end
+  end
 end

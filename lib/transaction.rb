@@ -11,6 +11,10 @@ class Transaction
     @balance += amount
   end
 
+  def debit(amount)
+    type_is_debit
+  end
+
   private
 
   def store_amount(amount)
@@ -19,5 +23,9 @@ class Transaction
 
   def type_is_credit
     @type = 'credit'
+  end
+
+  def type_is_debit
+    @type = 'debit'
   end
 end
