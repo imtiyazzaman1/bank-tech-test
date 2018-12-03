@@ -24,6 +24,10 @@ class Bank
     statement.add(transaction)
   end
 
+  def show_statement
+    @statement.print
+  end
+
   private
 
   def new_balance(amount)
