@@ -1,8 +1,9 @@
 # This class stores the data, type and amount of money transacted
 class Transaction
-  attr_reader :type, :balance, :amount
+  attr_reader :date, :type, :balance, :amount
   def initialize(balance)
     @balance = balance
+    @date = Time.now.strftime('%d/%m/%y')
   end
 
   def credit(amount)

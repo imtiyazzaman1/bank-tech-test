@@ -2,6 +2,9 @@ require('transaction')
 
 describe(Transaction) do
   let(:subject) { described_class.new(1000) }
+  it 'has the date of when it occurs' do
+    expect(subject.date).to eq(Time.now.strftime('%d/%m/%y'))
+  end
   describe('#credit') do
     before(:each) do
       subject.credit(500)
