@@ -19,6 +19,7 @@ class Bank
     transaction = new_transaction
     transaction.debit(amount)
     new_balance(transaction.balance)
+    statement.add(transaction)
   end
 
   private
