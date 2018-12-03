@@ -44,6 +44,6 @@ class Statement
 
   def create_table_entry(transaction)
     "\n" + add_date(transaction) + add_credit(transaction) +
-    add_debit(transaction) + to_2dp(transaction.balance)
+      add_debit(transaction) + to_2dp(transaction.balance)
   end
 end
