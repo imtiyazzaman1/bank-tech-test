@@ -16,6 +16,8 @@ class Bank
   end
 
   def withdraw(amount, new_transaction = Transaction.new(@balance))
+    raise 'You cannot withdraw more than your balance' if amount > balance
+
     transaction = new_transaction
     transaction.debit(amount)
     new_balance(transaction.balance)

@@ -2,7 +2,7 @@ require 'bank'
 require 'statement'
 
 describe Bank do
-  let(:subject) { described_class.new(Statement.new())}
+  let(:subject) { described_class.new(Statement.new) }
   let(:transaction) { double :transaction }
   let(:transaction_2) { double :transaction_2 }
 
@@ -37,6 +37,10 @@ describe Bank do
     it 'stores the transaction' do
       expect(subject.statement).to receive(:add)
       subject.withdraw(500, transaction_2)
+    end
+
+    it 'throws an error if withdraw amount exceeds balance' do
+      expect { subject.withdraw(600, transaction_2) }.to raise_error('You cannot withdraw more than your balance')
     end
   end
 end
