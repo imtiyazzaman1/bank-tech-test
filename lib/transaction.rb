@@ -13,6 +13,7 @@ class Transaction
 
   def debit(amount)
     type_is_debit
+    @balance -= amount
   end
 
   private

@@ -26,5 +26,9 @@ describe(Transaction) do
     it 'stores the tranaction type as debit' do
       expect(subject.type).to eq 'debit'
     end
+
+    it 'subtracts from the balance' do
+      expect(subject.balance).to eq(500)
+    end
   end
 end
