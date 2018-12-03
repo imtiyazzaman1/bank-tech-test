@@ -1,10 +1,8 @@
+# This is the class the user would interact with. It stores the users balance
 class Bank
+  attr_reader :balance
   def initialize
     @balance = 0
-  end
-
-  def balance
-    @balance
   end
 
   def deposit(amount)
@@ -14,6 +12,6 @@ class Bank
   private
 
   def add_to_balance(amount)
-    @balance =+ amount
+    @balance = + amount
   end
 end
