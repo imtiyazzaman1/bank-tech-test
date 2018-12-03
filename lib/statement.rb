@@ -19,7 +19,7 @@ class Statement
       table += add_date(transaction)
       table += add_credit(transaction)
       table += add_debit(transaction)
-      table += transaction.balance
+      table += format('%.2f', transaction.balance)
     end
     table
   end
@@ -31,13 +31,13 @@ class Statement
   end
 
   def add_credit(transaction)
-    return "#{transaction.amount} || " if transaction.type == 'credit'
+    return "#{format('%.2f', transaction.amount)} || " if transaction.type == 'credit'
 
     '|| '
   end
 
   def add_debit(transaction)
-    return "#{transaction.amount} || " if transaction.type == 'debit'
+    return "#{format('%.2f', transaction.amount)} || " if transaction.type == 'debit'
 
     '|| '
   end
