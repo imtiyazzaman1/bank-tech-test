@@ -8,8 +8,8 @@ describe('Viewing account statement') do
     bank.withdraw(500)
 
     expect(bank.show_statement).to eq "date || credit || debit || balance
-#{Time.now.strftime('%d/%m/%y')} || || 500.00 || 2500.00
-#{Time.now.strftime('%d/%m/%y')} || 2000.00 || || 3000.00
-#{Time.now.strftime('%d/%m/%y')} || 1000.00 || || 1000.00"
+03/12/2018 || || 500.00 || 2500.00
+03/12/2018 || 2000.00 || || 3000.00
+03/12/2018 || 1000.00 || || 1000.00"
   end
 end
