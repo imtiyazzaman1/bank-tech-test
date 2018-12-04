@@ -31,27 +31,19 @@ The test files can be found within the `spec` folder. The unit tests test each c
 
 ## Example Usage
 ```
-[2] pry(main)> require './lib/bank.rb'
-=> true
-[3] pry(main)> bank = Bank.new
-=> #<Bank:0x00007ff5f89b6fe0 @balance=0, @statement=#<Statement:0x00007ff5f89b6fb8 @transactions=[]>>
-[4] pry(main)> bank.deposit(1000)
-=> [#<Transaction:0x00007ff5f8934ce8 @amount=1000, @balance=1000, @date="03/12/18", @type="credit">]
-[5] pry(main)> bank.withdraw(100)
-=> [#<Transaction:0x00007ff5f8934ce8 @amount=1000, @balance=1000, @date="03/12/18", @type="credit">,
- #<Transaction:0x00007ff5f8bcbdf8 @amount=100, @balance=900, @date="03/12/18", @type="debit">]
-[6] pry(main)> bank.withdraw(10.40)
-=> [#<Transaction:0x00007ff5f8934ce8 @amount=1000, @balance=1000, @date="03/12/18", @type="credit">,
- #<Transaction:0x00007ff5f8bcbdf8 @amount=100, @balance=900, @date="03/12/18", @type="debit">,
- #<Transaction:0x00007ff5f8ad5a48 @amount=10.4, @balance=889.6, @date="03/12/18", @type="debit">]
-[7] pry(main)> bank.show_statement
-=> "date || credit || debit || balance\n03/12/18 || || 10.40 || 889.60\n03/12/18 || || 100.00 || 900.00\n03/12/18 || 1000.00
-|| || 1000.00"
+[13] pry(main)> b.deposit(100)
+=> [#<Transaction:0x00007ffc9d33c6c8 @amount=100, @balance=100, @date="04/12/2018", @type="credit">]
 
-[8] pry(main)> puts _
+[14] pry(main)> b.withdraw(12)
+=> [#<Transaction:0x00007ffc9d33c6c8 @amount=100, @balance=100, @date="04/12/2018", @type="credit">,
+ #<Transaction:0x00007ffc9d2d32e0 @amount=12, @balance=88, @date="04/12/2018", @type="debit">]
+
+[15] pry(main)> b.show_statement
+=> "date || credit || debit || balance\n04/12/2018 || || 12.00 || 88.00\n04/12/2018 || 100.00 || || 100.00"
+
+[16] pry(main)> puts _
 date || credit || debit || balance
-03/12/18 || || 10.40 || 889.60
-03/12/18 || || 100.00 || 900.00
-03/12/18 || 1000.00 || || 1000.00
+04/12/2018 || || 12.00 || 88.00
+04/12/2018 || 100.00 || || 100.00
 => nil
 ```
