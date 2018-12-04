@@ -1,5 +1,6 @@
-require_relative 'transaction'
 require_relative 'statement'
+require_relative 'transaction_factory'
+
 # This is the class the user would interact with. It stores the users balance
 class Bank
   attr_reader :balance, :statement
@@ -8,14 +9,16 @@ class Bank
     @statement = statement
   end
 
-  def deposit(amount, new_transaction = CreditTransaction.new(@balance))
+  def deposit(amount,
+              new_transaction = TransactionFactory.build(:credit, @balance))
     transaction = new_transaction
     transaction.credit(amount)
     new_balance(transaction.balance)
     statement.add(transaction)
   end
 
-  def withdraw(amount, new_transaction = DebitTransaction.new(@balance))
+  def withdraw(amount,
+               new_transaction = TransactionFactory.build(:debit, @balance))
     raise 'You cannot withdraw more than your balance' if amount > balance
 
     transaction = new_transaction
