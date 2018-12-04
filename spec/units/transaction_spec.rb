@@ -1,41 +1,18 @@
-require('transaction')
+require 'transaction'
+require 'timecop'
 
 describe(Transaction) do
   let(:subject) { described_class.new(1000) }
+  before do
+    time = Time.local(2018, 12, 3, 0, 0)
+    Timecop.freeze(time)
+  end
+
+  after do
+    Timecop.return
+  end
+
   it 'has the date of when it occurs' do
-    expect(subject.date).to eq(Time.now.strftime('%d/%m/%y'))
-  end
-  describe('#credit') do
-    before(:each) do
-      subject.credit(500)
-    end
-    it 'stores the transactions as type credit' do
-      expect(subject.type).to eq 'credit'
-    end
-
-    it 'add to the balance' do
-      expect(subject.balance).to eq(1500)
-    end
-
-    it 'stores the tranaction amount' do
-      expect(subject.amount).to eq(500)
-    end
-  end
-
-  describe('#debit') do
-    before(:each) do
-      subject.debit(500)
-    end
-    it 'stores the tranaction type as debit' do
-      expect(subject.type).to eq 'debit'
-    end
-
-    it 'subtracts from the balance' do
-      expect(subject.balance).to eq(500)
-    end
-
-    it 'stores the transaction amount' do
-      expect(subject.amount).to eq(500)
-    end
+    expect(subject.date).to eq('03/12/2018')
   end
 end
