@@ -2,11 +2,13 @@ require 'bank'
 require 'statement'
 
 describe Bank do
-  let(:subject) { described_class.new(Statement.new) }
   let(:transaction) { double :transaction }
   let(:transaction_2) { double :transaction_2 }
+  let(:statement) { double :statement }
+  let(:subject) { described_class.new(statement) }
 
   before(:each) do
+    allow(statement).to receive(:add)
     allow(transaction).to receive(:credit).with(1000)
     allow(transaction).to receive(:balance).and_return(1000)
     subject.deposit(1000, transaction)
@@ -18,7 +20,7 @@ describe Bank do
     end
 
     it 'stores the transaction' do
-      expect(subject.statement).to receive(:add)
+      expect(statement).to receive(:add)
       subject.deposit(1000, transaction)
     end
   end
@@ -35,7 +37,7 @@ describe Bank do
     end
 
     it 'stores the transaction' do
-      expect(subject.statement).to receive(:add)
+      expect(statement).to receive(:add)
       subject.withdraw(500, transaction_2)
     end
 
