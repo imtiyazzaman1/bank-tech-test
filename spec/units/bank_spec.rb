@@ -46,5 +46,12 @@ describe Bank do
         'You cannot withdraw more than your balance'
       )
     end
+
+    describe('#show_statement') do
+      it 'prints the statement' do
+        expect(statement).to receive(:print)
+        subject.show_statement
+      end
+    end
   end
 end
