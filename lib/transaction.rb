@@ -7,13 +7,13 @@ class Transaction
   end
 
   def credit(amount)
-    type_is_credit
+    type_is_credit if @type == nil
     store_amount(amount)
     @balance += amount
   end
 
   def debit(amount)
-    type_is_debit
+    type_is_debit if @type == nil
     store_amount(amount)
     @balance -= amount
   end
