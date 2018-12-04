@@ -8,14 +8,14 @@ class Bank
     @statement = statement
   end
 
-  def deposit(amount, new_transaction = Transaction.new(@balance))
+  def deposit(amount, new_transaction = CreditTransaction.new(@balance))
     transaction = new_transaction
     transaction.credit(amount)
     new_balance(transaction.balance)
     statement.add(transaction)
   end
 
-  def withdraw(amount, new_transaction = Transaction.new(@balance))
+  def withdraw(amount, new_transaction = DebitTransaction.new(@balance))
     raise 'You cannot withdraw more than your balance' if amount > balance
 
     transaction = new_transaction
