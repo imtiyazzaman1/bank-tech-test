@@ -1,8 +1,8 @@
 require 'credit_transaction'
+require 'transaction'
 
-describe(CreditTransaction) do
-  let(:subject) { described_class.new(1000) }
-
+describe CreditTransaction do
+  let(:subject) { Transaction.new(1000).extend(CreditTransaction) }
   before(:each) do
     subject.credit(500)
   end

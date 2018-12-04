@@ -1,8 +1,8 @@
 require 'debit_transaction'
+require 'transaction'
 
 describe(DebitTransaction) do
-  let(:subject) { described_class.new(1000) }
-
+  let(:subject) { Transaction.new(1000).extend(DebitTransaction) }
   before(:each) do
     subject.debit(500)
   end
