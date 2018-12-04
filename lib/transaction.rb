@@ -3,7 +3,7 @@ class Transaction
   attr_reader :date, :type, :balance, :amount
   def initialize(balance)
     @balance = balance
-    @date = Time.now.strftime('%d/%m/%y')
+    @date = Time.now.strftime('%d/%m/%Y')
   end
 
   def credit(amount)
